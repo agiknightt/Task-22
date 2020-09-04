@@ -23,24 +23,9 @@ namespace Task_22
                 Console.Write('$');
                 if (Console.KeyAvailable)
                 {
-                    ConsoleKeyInfo key = Console.ReadKey(true);
+                    MovePlayer(ref playerDX, ref playerDY);
 
-                    switch (key.Key)
-                    {
-                        case ConsoleKey.UpArrow:
-                            playerDX = -1; playerDY = 0;
-                            break;
-                        case ConsoleKey.DownArrow:
-                            playerDX = 1; playerDY = 0;
-                            break;
-                        case ConsoleKey.LeftArrow:
-                            playerDX = 0; playerDY = -1;
-                            break;
-                        case ConsoleKey.RightArrow:
-                            playerDX = 0; playerDY = 1;
-                            break;
-                    }
-                    if(map[playerX + playerDX, playerY + playerDY] != '*')
+                    if (map[playerX + playerDX, playerY + playerDY] != '*')
                     {
                         Console.SetCursorPosition(playerY, playerX);
                         Console.Write(" ");
@@ -51,7 +36,28 @@ namespace Task_22
                         Console.SetCursorPosition(playerY, playerX);
                         Console.Write('$');
                     }
-                }                
+                }
+            }
+        }
+
+        private static void MovePlayer(ref int playerDX, ref int playerDY)
+        {
+            ConsoleKeyInfo key = Console.ReadKey(true);
+
+            switch (key.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    playerDX = -1; playerDY = 0;
+                    break;
+                case ConsoleKey.DownArrow:
+                    playerDX = 1; playerDY = 0;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    playerDX = 0; playerDY = -1;
+                    break;
+                case ConsoleKey.RightArrow:
+                    playerDX = 0; playerDY = 1;
+                    break;
             }
         }
 
